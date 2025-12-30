@@ -1,0 +1,80 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "experiences": "Experiencias",
+    "calendar": "Calendario",
+    "about": "Nosotros",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "DESPIERTA TUS",
+    "subtitle": "Bootcamps de fitness al aire libre de élite en los lugares más poderosos de la naturaleza",
+    "cta": "Explorar Experiencias"
+  },
+  "who_are_we": {
+    "title": "¿Quiénes Somos?",
+    "description": "Conectando con la naturaleza donde despertamos instintos",
+    "mission_title": "Nuestra Misión",
+    "mission_body": "Reconectar a los atletas con su fuerza primitiva entrenando en ambientes que formaron la resiliencia humana. Combinamos entrenamiento de élite con el poder crudo de la naturaleza.",
+    "values": {
+      "nature": "Montañas",
+      "community": "Playas",
+      "mindset": "Bosques"
+    }
+  },
+  "experiences": {
+    "title": "Nuestras Experiencias",
+    "description": "Elige tu aventura. Cada bootcamp está diseñado para desafiarte física y mentalmente mientras te sumerges en entornos naturales impresionantes.",
+    "cant_decide": "¿No puedes decidir? Podemos ayudarte a elegir la experiencia perfecta para tus objetivos.",
+    "card_1": {
+      "title": "Montaña Sagrada",
+      "desc": "Entrenamiento de altura y senderismo."
+    },
+    "card_2": {
+      "title": "Fuerza Costera",
+      "desc": "Resistencia en arena y mar."
+    },
+    "card_3": {
+      "title": "Retiro Bosque",
+      "desc": "Fin de semana inmersivo de supervivencia y fitness."
+    },
+    "card_4": {
+      "title": "Desierto Infinito",
+      "desc": "Resistencia extrema bajo el sol."
+    }
+  },
+  "calendar": {
+    "section_title": "Reserva Tu",
+    "adventure": "Aventura",
+    "description": "Selecciona tus fechas preferidas y reserva tu lugar en una de nuestras experiencias transformadoras.",
+    "book_btn": "Reservar Ahora",
+    "questions_title": "¿Preguntas sobre la reserva?",
+    "questions_desc": "Nuestro equipo está aquí para ayudarte a encontrar la experiencia perfecta. Contáctanos para recomendaciones personalizadas."
+  },
+  "faq": {
+    "title": "Preguntas",
+    "questions": "Frecuentes",
+    "description": "Todo lo que necesitas saber sobre nuestros bootcamps al aire libre.",
+    "still_questions": "¿Aún tienes preguntas?",
+    "contact_desc": "¡Estamos aquí para ayudar! Contacta a nuestro equipo en cualquier momento.",
+    "item_1": {
+      "question": "¿Necesito experiencia previa?",
+      "answer": "No, nuestros programas están diseñados para adaptarse a diferentes niveles de condición física pero se requiere una base mínima de salud."
+    },
+    "item_2": {
+      "question": "¿Qué debo llevar?",
+      "answer": "Te enviaremos una lista detallada, pero esencialmente ropa deportiva cómoda, calzado de trail y buena actitud."
+    },
+    "item_3": {
+      "question": "¿Incluye alojamiento?",
+      "answer": "Sí, nuestros retiros de fin de semana incluyen alojamiento y comidas. Las sesiones diarias no."
+    }
+  },
+  "footer": {
+    "description": "Conectando con la naturaleza donde despertamos instintos. Bootcamps de fitness al aire libre en hermosos parajes naturales.",
+    "quick_links": "Enlaces Rápidos",
+    "rights": "Todos los derechos reservados.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio"
+  }
+}

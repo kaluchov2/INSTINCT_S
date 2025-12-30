@@ -1,0 +1,80 @@
+{
+  "nav": {
+    "home": "Home",
+    "experiences": "Experiences",
+    "calendar": "Calendar",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "AWAKEN YOUR",
+    "subtitle": "Elite outdoor fitness bootcamps in nature's most powerful places",
+    "cta": "Explore Experiences"
+  },
+  "who_are_we": {
+    "title": "Who Are We?",
+    "description": "Connecting with nature where we awaken instincts",
+    "mission_title": "Our Mission",
+    "mission_body": "To reconnect athletes with their primal strength by training in the environments that shaped human resilience. We combine elite coaching with nature's raw power to unlock your true potential.",
+    "values": {
+      "nature": "Mountains",
+      "community": "Beaches",
+      "mindset": "Forests"
+    }
+  },
+  "experiences": {
+    "title": "Our Experiences",
+    "description": "Choose your adventure. Each bootcamp is designed to challenge you physically and mentally while immersing you in breathtaking natural environments.",
+    "cant_decide": "Can't decide? We can help you choose the perfect experience for your goals.",
+    "card_1": {
+      "title": "Sacred Mountain",
+      "desc": "High altitude training and hiking."
+    },
+    "card_2": {
+      "title": "Coastal Strength",
+      "desc": "Endurance on sand and sea."
+    },
+    "card_3": {
+      "title": "Forest Retreat",
+      "desc": "Immersive weekend of survival and fitness."
+    },
+    "card_4": {
+      "title": "Infinite Desert",
+      "desc": "Extreme endurance under the sun."
+    }
+  },
+  "calendar": {
+    "section_title": "Book Your",
+    "adventure": "Adventure",
+    "description": "Select your preferred dates and reserve your spot in one of our transformative bootcamp experiences.",
+    "book_btn": "Book Now",
+    "questions_title": "Questions about booking?",
+    "questions_desc": "Our team is here to help you find the perfect bootcamp experience. Reach out to us for personalized recommendations."
+  },
+  "faq": {
+    "title": "Frequently Asked",
+    "questions": "Questions",
+    "description": "Everything you need to know about our outdoor bootcamp experiences.",
+    "still_questions": "Still have questions?",
+    "contact_desc": "We're here to help! Reach out to our team anytime.",
+    "item_1": {
+      "question": "Do I need prior experience?",
+      "answer": "No, our programs are designed to adapt to different fitness levels but a minimum health base is required."
+    },
+    "item_2": {
+      "question": "What should I bring?",
+      "answer": "We will send you a detailed list, but essentially comfortable sportswear, trail shoes, and a good attitude."
+    },
+    "item_3": {
+      "question": "Does it include accommodation?",
+      "answer": "Yes, our weekend retreats include accommodation and meals. Daily sessions do not."
+    }
+  },
+  "footer": {
+    "description": "Connecting with nature where we awaken instincts. Elite outdoor fitness bootcamps in beautiful natural places.",
+    "quick_links": "Quick Links",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+}
