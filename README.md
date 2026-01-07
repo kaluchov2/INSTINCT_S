@@ -1,6 +1,6 @@
-# Instinct S - Elite Outdoor Bootcamps
+# ka'an - Elite Outdoor Bootcamps
 
-A bold, athletic landing page for Instinct S - outdoor fitness bootcamps that connect athletes with nature.
+A bold, athletic landing page for ka'an - outdoor fitness bootcamps that connect athletes with nature.
 
 ## Features
 
@@ -137,10 +137,10 @@ All content is centralized in `lib/constants.ts`:
 
 ## License
 
-Private project for Instinct S.
+Private project for ka'an.
 
 ## Contact
 
 For questions or support:
-- Email: info@instincts.com
+- Email: info@kaan.com
 - Phone: +1 (555) 123-4567

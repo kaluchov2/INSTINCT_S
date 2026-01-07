@@ -12,7 +12,7 @@ export const EXPERIENCES: Experience[] = [
   },
   {
     id: "los-cabos",
-    title: "Instinct S Los Cabos Bootcamp",
+    title: "ka'an Los Cabos Bootcamp",
     description:
       "Train on pristine beaches with the power of the ocean as your backdrop. Combine beach workouts with ocean activities for a complete athletic experience.",
     imageSrc: "/images/experiences/los-cabos.jpg",
@@ -61,7 +61,7 @@ export const FAQ_ITEMS: FAQItem[] = [
       "Yes! All our bootcamps include nutritious, athlete-focused meals designed to fuel your training. We accommodate dietary restrictions and preferences with advance notice.",
   },
   {
-    question: "What makes Instinct S different from traditional gyms?",
+    question: "What makes ka'an different from traditional gyms?",
     answer:
       "We believe in training where nature intended. Our bootcamps take you outside the four walls of a gym to mountains, beaches, and beautiful natural environments where you'll awaken primal instincts and connect with your surroundings.",
   },
@@ -73,23 +73,23 @@ export const FAQ_ITEMS: FAQItem[] = [
 ];
 
 export const CONTACT_INFO: ContactInfo = {
-  email: "info@instincts.com",
+  email: "info@kaan.com",
   phone: "+1 (555) 123-4567",
   location: "Multiple locations across mountains and beaches",
   socialLinks: [
     {
       platform: "Instagram",
-      url: "https://instagram.com/instincts",
+      url: "https://instagram.com/kaan",
       icon: "instagram",
     },
     {
       platform: "Facebook",
-      url: "https://facebook.com/instincts",
+      url: "https://facebook.com/kaan",
       icon: "facebook",
     },
     {
       platform: "Twitter",
-      url: "https://twitter.com/instincts",
+      url: "https://twitter.com/kaan",
       icon: "twitter",
     },
   ],

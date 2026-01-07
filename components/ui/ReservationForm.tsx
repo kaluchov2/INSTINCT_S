@@ -3,11 +3,12 @@
 import { cn } from "@/lib/utils";
 import { Button } from "./Button";
 import { EXPERIENCES } from "@/lib/constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Activity, BookingFormData } from "@/types";
 import { format } from "date-fns";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 
 interface ReservationFormProps {
   className?: string;
@@ -26,6 +27,7 @@ export function ReservationForm({
   const [bookingStep, setBookingStep] = useState<BookingStep>("form");
   const [reservationData, setReservationData] = useState<any>(null);
   const queryClient = useQueryClient();
+  const { t } = useTranslation('common');
 
   const {
     register,
@@ -34,13 +36,8 @@ export function ReservationForm({
     watch,
   } = useForm<BookingFormData>();
 
-  const experienceId = watch("activityId")
-    ? EXPERIENCES.find((e) =>
-        activities?.some(
-          (a) => a.id === watch("activityId") && a.experience_id === e.id
-        )
-      )?.id
-    : selectedExperience;
+  const watchedActivityId = watch("activityId");
+  const experienceId = watchedActivityId || selectedExperience;
 
   // Fetch activities for the selected date and experience
   const { data: activitiesData } = useQuery({
@@ -68,6 +65,11 @@ export function ReservationForm({
   });
 
   const activities: Activity[] = activitiesData || [];
+
+  // Reset selected activity when date or experience changes
+  useEffect(() => {
+    setSelectedActivity("");
+  }, [selectedDate, experienceId]);
 
   // Create reservation mutation
   const createReservation = useMutation({
@@ -143,16 +145,16 @@ export function ReservationForm({
         <div className="text-center">
           <div className="text-6xl mb-4">✓</div>
           <h3 className="text-2xl font-bold text-brand-gunmetal mb-4">
-            Booking Confirmed!
+            {t('reservation_form.success_title')}
           </h3>
           <p className="text-gray-600 mb-4">
-            Your confirmation code is:{" "}
+            {t('reservation_form.success_code')}{" "}
             <strong className="text-brand-teal">
               {reservationData.confirmationCode}
             </strong>
           </p>
           <p className="text-sm text-gray-500">
-            We've sent a confirmation email to your inbox with all the details.
+            {t('reservation_form.success_email')}
           </p>
           <Button
             onClick={() => {
@@ -163,7 +165,7 @@ export function ReservationForm({
             variant="primary"
             className="mt-6"
           >
-            Book Another Activity
+            {t('reservation_form.book_another')}
           </Button>
         </div>
       </div>
@@ -175,11 +177,10 @@ export function ReservationForm({
     return (
       <div className={cn("bg-white rounded-lg shadow-md p-6", className)}>
         <h3 className="text-2xl font-bold text-brand-gunmetal mb-6">
-          Mock Payment
+          {t('reservation_form.payment_title')}
         </h3>
         <p className="text-gray-600 mb-6">
-          This is a simulated payment. Click the button below to confirm your
-          reservation.
+          {t('reservation_form.payment_desc')}
         </p>
         <Button
           onClick={handleMockPayment}
@@ -188,7 +189,7 @@ export function ReservationForm({
           size="lg"
           className="w-full"
         >
-          {confirmPayment.isPending ? "Processing..." : "Confirm Payment"}
+          {confirmPayment.isPending ? t('reservation_form.processing') : t('reservation_form.confirm_payment')}
         </Button>
         <Button
           onClick={() => setBookingStep("form")}
@@ -196,7 +197,7 @@ export function ReservationForm({
           size="lg"
           className="w-full mt-4"
         >
-          Cancel
+          {t('reservation_form.cancel')}
         </Button>
       </div>
     );
@@ -206,7 +207,7 @@ export function ReservationForm({
   return (
     <div className={cn("bg-white rounded-lg shadow-md p-6", className)}>
       <h3 className="text-2xl font-bold text-brand-gunmetal mb-6">
-        Reserve Your Spot
+        {t('reservation_form.title')}
       </h3>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -215,19 +216,16 @@ export function ReservationForm({
             htmlFor="experience"
             className="block text-sm font-semibold text-gray-700 mb-2"
           >
-            Select Experience
+            {t('reservation_form.select_experience')}
           </label>
           <select
             {...register("activityId", {
-              required: "Please select an experience",
+              required: t('reservation_form.experience_required'),
             })}
-            value={experienceId || ""}
-            onChange={(e) => {
-              // This is just for display - actual activity selection is separate
-            }}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors bg-white"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors bg-white text-gray-700"
+            defaultValue={selectedExperience || ""}
           >
-            <option value="">Choose a bootcamp...</option>
+            <option value="">{t('reservation_form.choose_bootcamp')}</option>
             {EXPERIENCES.map((exp) => (
               <option key={exp.id} value={exp.id}>
                 {exp.title}
@@ -247,32 +245,23 @@ export function ReservationForm({
               htmlFor="activity"
               className="block text-sm font-semibold text-gray-700 mb-2"
             >
-              Select Time Slot for {format(selectedDate, "MMMM dd, yyyy")}
+              {t('reservation_form.select_time_slot')} {format(selectedDate, "MMMM dd, yyyy")}
             </label>
             <select
               value={selectedActivity}
               onChange={(e) => setSelectedActivity(e.target.value)}
               required
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors bg-white"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors bg-white text-gray-700"
             >
-              <option value="">Choose a time...</option>
+              <option value="">{t('reservation_form.choose_time')}</option>
               {activities.map((activity) => (
                 <option key={activity.id} value={activity.id}>
                   {activity.start_time} - {activity.end_time} ($
                   {activity.price_usd}) - {activity.capacity - activity.reserved_count}{" "}
-                  spots left
+                  {t('reservation_form.spots_left')}
                 </option>
               ))}
             </select>
-          </div>
-        )}
-
-        {selectedDate && experienceId && activities.length === 0 && (
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-            <p className="text-yellow-800 text-sm">
-              No available time slots for this date. Please select another date
-              or experience.
-            </p>
           </div>
         )}
 
@@ -281,13 +270,13 @@ export function ReservationForm({
             htmlFor="customerName"
             className="block text-sm font-semibold text-gray-700 mb-2"
           >
-            Full Name
+            {t('reservation_form.full_name')}
           </label>
           <input
-            {...register("customerName", { required: "Name is required" })}
+            {...register("customerName", { required: t('reservation_form.name_required') })}
             type="text"
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors"
-            placeholder="Enter your full name"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors text-gray-700"
+            placeholder={t('reservation_form.full_name_placeholder')}
           />
           {errors.customerName && (
             <p className="text-red-500 text-sm mt-1">
@@ -301,16 +290,16 @@ export function ReservationForm({
             htmlFor="customerEmail"
             className="block text-sm font-semibold text-gray-700 mb-2"
           >
-            Email Address
+            {t('reservation_form.email')}
           </label>
           <input
             {...register("customerEmail", {
-              required: "Email is required",
-              pattern: { value: /^\S+@\S+$/i, message: "Invalid email" },
+              required: t('reservation_form.email_required'),
+              pattern: { value: /^\S+@\S+$/i, message: t('reservation_form.email_invalid') },
             })}
             type="email"
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors"
-            placeholder="your.email@example.com"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors text-gray-700"
+            placeholder={t('reservation_form.email_placeholder')}
           />
           {errors.customerEmail && (
             <p className="text-red-500 text-sm mt-1">
@@ -324,13 +313,13 @@ export function ReservationForm({
             htmlFor="phone"
             className="block text-sm font-semibold text-gray-700 mb-2"
           >
-            Phone (Optional)
+            {t('reservation_form.phone')}
           </label>
           <input
             {...register("phone")}
             type="tel"
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors"
-            placeholder="+1 (555) 123-4567"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors text-gray-700"
+            placeholder={t('reservation_form.phone_placeholder')}
           />
         </div>
 
@@ -339,20 +328,20 @@ export function ReservationForm({
             htmlFor="participants"
             className="block text-sm font-semibold text-gray-700 mb-2"
           >
-            Number of Participants
+            {t('reservation_form.participants')}
           </label>
           <input
             {...register("participants", {
-              required: "Number of participants is required",
-              min: { value: 1, message: "At least 1 participant" },
-              max: { value: 10, message: "Maximum 10 participants" },
+              required: t('reservation_form.participants_required'),
+              min: { value: 1, message: t('reservation_form.participants_min') },
+              max: { value: 10, message: t('reservation_form.participants_max') },
               valueAsNumber: true,
             })}
             type="number"
             defaultValue={1}
             min={1}
             max={10}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors text-gray-700"
           />
           {errors.participants && (
             <p className="text-red-500 text-sm mt-1">
@@ -366,15 +355,23 @@ export function ReservationForm({
             htmlFor="additionalInfo"
             className="block text-sm font-semibold text-gray-700 mb-2"
           >
-            Additional Information (Optional)
+            {t('reservation_form.additional_info')}
           </label>
           <textarea
             {...register("additionalInfo")}
             rows={3}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors resize-none"
-            placeholder="Any questions or special requirements?"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal focus:outline-none transition-colors resize-none text-gray-700"
+            placeholder={t('reservation_form.additional_info_placeholder')}
           />
         </div>
+
+        {selectedDate && experienceId && activities.length === 0 && (
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+            <p className="text-yellow-800 text-sm">
+              {t('reservation_form.no_slots')}
+            </p>
+          </div>
+        )}
 
         <Button
           type="submit"
@@ -384,8 +381,8 @@ export function ReservationForm({
           disabled={createReservation.isPending || !selectedActivity}
         >
           {createReservation.isPending
-            ? "Processing..."
-            : "Continue to Payment"}
+            ? t('reservation_form.processing')
+            : t('reservation_form.continue_payment')}
         </Button>
       </form>
     </div>

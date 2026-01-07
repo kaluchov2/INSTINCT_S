@@ -50,7 +50,7 @@ export function CalendarSection() {
               {t('calendar.questions_desc', 'Our team is here to help you find the perfect bootcamp experience. Reach out to us for personalized recommendations and group booking options.')}
             </p>
             <p className="text-brand-teal font-semibold">
-              Email: info@instincts.com | Phone: +1 (555) 123-4567
+              Email: info@kaan.com | Phone: +1 (555) 123-4567
             </p>
           </div>
         </div>

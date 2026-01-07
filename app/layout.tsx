@@ -11,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Instinct S | Elite Outdoor Bootcamps",
-  description: "Connecting with nature where we awaken instincts. Elite outdoor fitness bootcamps in mountains, beaches, and beautiful natural places.",
+  title: "ka'an | Elite Outdoor Bootcamps",
+  description: "Connecting with nature where we awaken your spirit. Elite outdoor fitness bootcamps in mountains, beaches, and beautiful natural places.",
 };
 
 export default function RootLayout({

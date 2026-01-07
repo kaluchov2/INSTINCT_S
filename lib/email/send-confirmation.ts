@@ -28,7 +28,7 @@ export async function sendConfirmationEmail(reservation: any) {
     );
 
     const { data, error } = await resend.emails.send({
-      from: 'Instinct S <onboarding@resend.dev>',
+      from: "ka'an <onboarding@resend.dev>",
       to: [reservation.customer_email],
       subject: `Booking Confirmed - ${experience.title} - ${reservation.confirmation_code}`,
       html: emailHtml,

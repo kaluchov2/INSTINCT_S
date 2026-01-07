@@ -27,7 +27,7 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             <div>
               <h3 className="text-2xl font-black mb-4">
-                INSTINCT <span className="text-brand-orange">S</span>
+                ka'an
               </h3>
               <p className="text-gray-300 mb-4">
                 {t('footer.description', 'Connecting with nature where we awaken instincts. Elite outdoor fitness bootcamps in beautiful natural places.')}
@@ -108,7 +108,7 @@ export function Footer() {
         <div className="border-t border-white/10 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-400">
-              {new Date().getFullYear()} Instinct S. {t('footer.rights')}
+              {new Date().getFullYear()} ka'an. {t('footer.rights')}
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-sm text-gray-400 hover:text-brand-orange transition-colors">

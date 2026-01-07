@@ -67,7 +67,7 @@ export function FooterSection() {
               {t('faq.contact_desc', "We're here to help! Reach out to our team anytime.")}
             </p>
             <a
-              href="mailto:info@instincts.com"
+              href="mailto:info@kaan.com"
               className="inline-block bg-white text-brand-gunmetal font-bold px-8 py-3 rounded-lg hover:scale-105 transition-transform"
             >
               {t('nav.contact')}

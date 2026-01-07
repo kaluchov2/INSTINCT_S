@@ -24,7 +24,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center">
             <a href="#home" className="text-2xl md:text-3xl font-black text-white">
-              INSTINCT <span className="text-brand-teal">S</span>
+              ka'an
             </a>
           </div>
 

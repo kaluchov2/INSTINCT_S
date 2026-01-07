@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validated = reservationSchema.parse(body);
 
-    const supabase = createClient();
+    const supabase = await createClient();
 
     // Call the database function to safely create reservation
     const { data, error } = await supabase.rpc('reserve_activity_slot', {

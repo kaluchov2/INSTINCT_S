@@ -26,9 +26,9 @@ export const ConfirmationEmail: React.FC<ConfirmationEmailProps> = ({
     <body style={{ fontFamily: 'Arial, sans-serif', lineHeight: '1.6', color: '#333' }}>
       <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
         <div style={{ backgroundColor: '#2a3439', padding: '30px', borderRadius: '8px 8px 0 0' }}>
-          <h1 style={{ color: '#ffffff', margin: 0 }}>INSTINCT S</h1>
+          <h1 style={{ color: '#ffffff', margin: 0 }}>ka'an</h1>
           <p style={{ color: '#14b8a6', fontSize: '18px', margin: '10px 0 0 0' }}>
-            Awaken Your Instincts
+            Awaken Your Spirit
           </p>
         </div>
 
@@ -86,8 +86,8 @@ export const ConfirmationEmail: React.FC<ConfirmationEmailProps> = ({
           <h3 style={{ color: '#2a3439' }}>Need to Make Changes?</h3>
           <p>
             If you need to modify or cancel your reservation, please contact us at{' '}
-            <a href="mailto:info@instincts.com" style={{ color: '#14b8a6' }}>
-              info@instincts.com
+            <a href="mailto:info@kaan.com" style={{ color: '#14b8a6' }}>
+              info@kaan.com
             </a>{' '}
             with your confirmation code.
           </p>
@@ -98,7 +98,7 @@ export const ConfirmationEmail: React.FC<ConfirmationEmailProps> = ({
 
           <p>
             See you soon,<br />
-            <strong>The Instinct S Team</strong>
+            <strong>The ka'an Team</strong>
           </p>
         </div>
 
@@ -111,10 +111,10 @@ export const ConfirmationEmail: React.FC<ConfirmationEmailProps> = ({
           color: '#6b7280'
         }}>
           <p style={{ margin: '5px 0' }}>
-            Instinct S | Elite Outdoor Bootcamps
+            ka'an | Elite Outdoor Bootcamps
           </p>
           <p style={{ margin: '5px 0' }}>
-            Phone: +1 (555) 123-4567 | Email: info@instincts.com
+            Phone: +1 (555) 123-4567 | Email: info@kaan.com
           </p>
         </div>
       </div>

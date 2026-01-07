@@ -26,7 +26,7 @@ export function HeroSection() {
       <Container className="relative z-10 text-center">
         <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-tight">
-             {t('hero.title').toUpperCase()} <span className="text-brand-teal">INSTINCTS</span>
+             {t('hero.title').toUpperCase()} <span className="text-brand-teal">ka'an</span>
           </h1>
 
           <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 font-medium max-w-3xl mx-auto">

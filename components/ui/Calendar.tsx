@@ -15,6 +15,15 @@ import {
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Activity } from "@/types";
+import { EXPERIENCES } from "@/lib/constants";
+
+// Color mapping for each experience
+const EXPERIENCE_COLORS: Record<string, { bg: string; text: string; dot: string }> = {
+  "elite-mountain": { bg: "bg-purple-100", text: "text-purple-800", dot: "bg-purple-500" },
+  "los-cabos": { bg: "bg-blue-100", text: "text-blue-800", dot: "bg-blue-500" },
+  "hyrox-training": { bg: "bg-orange-100", text: "text-orange-800", dot: "bg-orange-500" },
+  "running-era": { bg: "bg-green-100", text: "text-green-800", dot: "bg-green-500" },
+};
 
 interface CalendarProps {
   className?: string;
@@ -71,6 +80,18 @@ export function Calendar({
     const dateActivities = getActivitiesForDate(date);
     return dateActivities.some((a) => a.reserved_count < a.capacity);
   };
+
+  const getUniqueExperiences = (date: Date) => {
+    const dateActivities = getActivitiesForDate(date);
+    const availableActivities = dateActivities.filter((a) => a.reserved_count < a.capacity);
+    const uniqueExpIds = [...new Set(availableActivities.map((a) => a.experience_id))];
+    return uniqueExpIds;
+  };
+
+  // Get all unique experiences that have activities in this month
+  const monthExperiences = [...new Set(activities.map((a) => a.experience_id))].filter(
+    (expId) => activities.some((a) => a.experience_id === expId && a.reserved_count < a.capacity)
+  );
 
   const isPastDate = (date: Date) => {
     return isBefore(date, startOfDay(new Date()));
@@ -137,7 +158,7 @@ export function Calendar({
               onClick={() => !past && available && onDateSelect(day)}
               disabled={past || !available}
               className={cn(
-                "aspect-square flex items-center justify-center rounded-lg text-sm font-medium transition-colors relative",
+                "aspect-square flex flex-col items-center justify-center rounded-lg text-sm font-medium transition-colors relative",
                 isSelected && "ring-2 ring-brand-teal bg-brand-teal/10",
                 isCurrentDay && "bg-brand-teal/20",
                 available &&
@@ -150,7 +171,17 @@ export function Calendar({
             >
               <span>{format(day, "d")}</span>
               {available && !past && (
-                <span className="absolute bottom-1 w-1.5 h-1.5 bg-brand-teal rounded-full" />
+                <div className="absolute bottom-1 flex gap-0.5">
+                  {getUniqueExperiences(day).map((expId) => (
+                    <span
+                      key={expId}
+                      className={cn(
+                        "w-1.5 h-1.5 rounded-full",
+                        EXPERIENCE_COLORS[expId]?.dot || "bg-brand-teal"
+                      )}
+                    />
+                  ))}
+                </div>
               )}
             </button>
           );
@@ -158,14 +189,29 @@ export function Calendar({
       </div>
 
       <div className="mt-4 pt-4 border-t border-gray-200">
-        <div className="flex items-center gap-4 text-xs justify-center">
-          <div className="flex items-center gap-1">
-            <span className="w-2 h-2 bg-brand-teal rounded-full" />
-            <span className="text-gray-600">Available</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <span className="w-2 h-2 bg-gray-300 rounded-full" />
-            <span className="text-gray-600">Unavailable</span>
+        <div className="space-y-2">
+          <p className="text-xs font-semibold text-gray-600 text-center mb-2">
+            Available Activities
+          </p>
+          <div className="flex flex-wrap gap-2 justify-center">
+            {monthExperiences.map((expId) => {
+              const experience = EXPERIENCES.find((e) => e.id === expId);
+              const colors = EXPERIENCE_COLORS[expId];
+              return experience ? (
+                <div
+                  key={expId}
+                  className={cn(
+                    "flex items-center gap-1.5 px-2 py-1 rounded-full text-xs",
+                    colors?.bg || "bg-gray-100"
+                  )}
+                >
+                  <span className={cn("w-2 h-2 rounded-full", colors?.dot || "bg-brand-teal")} />
+                  <span className={cn("font-medium", colors?.text || "text-gray-700")}>
+                    {experience.title}
+                  </span>
+                </div>
+              ) : null;
+            })}
           </div>
         </div>
       </div>

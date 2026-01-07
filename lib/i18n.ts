@@ -14,6 +14,7 @@ i18next
   .init({
     fallbackLng: 'es', // Default to Spanish
     lng: 'es', // Force start with Spanish if needed, though detection will run
+    defaultNS: 'common', // Use 'common' namespace instead of default 'translation'
     debug: process.env.NODE_ENV === 'development',
     interpolation: {
       escapeValue: false, // React already safe from XSS
