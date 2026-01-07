@@ -4,9 +4,10 @@ import { sendConfirmationEmail } from '@/lib/email/send-confirmation';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const supabase = await createClient();
 
     // Get reservation details with activity information
@@ -24,7 +25,7 @@ export async function POST(
         )
       `
       )
-      .eq('id', params.id)
+      .eq('id', id)
       .single();
 
     if (fetchError || !reservation) {
@@ -53,7 +54,7 @@ export async function POST(
           status: 'confirmed',
           updated_at: new Date().toISOString(),
         })
-        .eq('id', params.id);
+        .eq('id', id);
 
       if (updateError) {
         console.error('Error updating reservation:', updateError);

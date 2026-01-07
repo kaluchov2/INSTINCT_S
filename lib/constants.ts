@@ -6,7 +6,7 @@ export const EXPERIENCES: Experience[] = [
     title: "Elite Mountain",
     description:
       "Push your limits at high altitude with breathtaking views. Experience intense training sessions in the mountains where nature challenges your physical and mental strength.",
-    imageSrc: "/images/experiences/mountain.jpg",
+    imageSrc: "https://res.cloudinary.com/drg5lhdiw/image/upload/v1749594388/cld-sample-2.jpg",
     imageAlt: "Mountain bootcamp training at high altitude",
     features: ["High-altitude training", "Mountain hiking", "Strength conditioning"],
   },
@@ -15,7 +15,7 @@ export const EXPERIENCES: Experience[] = [
     title: "ka'an Los Cabos Bootcamp",
     description:
       "Train on pristine beaches with the power of the ocean as your backdrop. Combine beach workouts with ocean activities for a complete athletic experience.",
-    imageSrc: "/images/experiences/los-cabos.jpg",
+    imageSrc: "https://res.cloudinary.com/drg5lhdiw/image/upload/v1749594388/cld-sample-2.jpg",
     imageAlt: "Beach bootcamp training in Los Cabos",
     features: ["Beach training", "Ocean activities", "Sunset sessions"],
   },
@@ -24,7 +24,7 @@ export const EXPERIENCES: Experience[] = [
     title: "Specific Hyrox Training",
     description:
       "Prepare for competition with targeted Hyrox training in natural settings. Build endurance, strength, and technique needed to excel in competitive fitness.",
-    imageSrc: "/images/experiences/hyrox.jpg",
+    imageSrc: "https://res.cloudinary.com/drg5lhdiw/image/upload/v1749594388/cld-sample-2.jpg",
     imageAlt: "Hyrox competition preparation training",
     features: ["Competition prep", "Interval training", "Performance tracking"],
   },
@@ -33,7 +33,7 @@ export const EXPERIENCES: Experience[] = [
     title: "Running Era Experience",
     description:
       "Discover the joy of trail running through stunning natural landscapes. From beginner-friendly paths to challenging terrain, awaken your running instincts.",
-    imageSrc: "/images/experiences/running.jpg",
+    imageSrc: "https://res.cloudinary.com/drg5lhdiw/image/upload/v1749594388/cld-sample-2.jpg",
     imageAlt: "Trail running experience in nature",
     features: ["Trail running", "Endurance building", "Scenic routes"],
   },

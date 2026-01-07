@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { resend } from './resend-client';
 import { ConfirmationEmail } from './templates/confirmation-email';
 import { EXPERIENCES } from '@/lib/constants';
@@ -14,17 +15,17 @@ export async function sendConfirmationEmail(reservation: any) {
   }
 
   try {
-    const emailHtml = render(
-      ConfirmationEmail({
-        customerName: reservation.customer_name,
-        confirmationCode: reservation.confirmation_code,
-        experienceTitle: experience.title,
-        date: reservation.activity.date,
-        startTime: reservation.activity.start_time,
-        endTime: reservation.activity.end_time,
-        participants: reservation.participants,
-        totalAmount: reservation.total_amount,
-      })
+    const emailHtml = await render(
+      <ConfirmationEmail
+        customerName={reservation.customer_name}
+        confirmationCode={reservation.confirmation_code}
+        experienceTitle={experience.title}
+        date={reservation.activity.date}
+        startTime={reservation.activity.start_time}
+        endTime={reservation.activity.end_time}
+        participants={reservation.participants}
+        totalAmount={reservation.total_amount}
+      />
     );
 
     const { data, error } = await resend.emails.send({
